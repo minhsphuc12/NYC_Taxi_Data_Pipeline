@@ -108,7 +108,7 @@ This fragmentation led to incomplete insights and impeded our capability to make
 1.  **Clone the repository**:
 
     ```bash
-    git clone https://github.com/trannhatnguyen2/NYC_Taxi_Data_Pipeline
+    git clone https://github.com/minhsphuc12/NYC_Taxi_Data_Pipeline
     ```
 
 2.  **Start all infrastructures**:
@@ -368,3 +368,14 @@ Read [`README.md`](https://github.com/trannhatnguyen2/data-engineer-mle2/tree/ma
 ---
 
 <p>&copy; 2024 NhatNguyen</p>
+
+
+<!-- **# install debezium on MacOS
+# brew install openjdk@21
+# export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
+# git clone https://github.com/debezium/debezium.git
+# cd debezium
+# cd docker
+# ./build-all.sh
+** -->

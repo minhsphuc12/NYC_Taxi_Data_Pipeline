@@ -7,11 +7,12 @@ import time
 from minio import Minio
 
 from pyspark import SparkConf, SparkContext
+from pyspark.sql import SparkSession, DataFrame
 
 utils_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils'))
 sys.path.append(utils_path)
-from helpers import load_cfg
-from minio_utils import MinIOClient
+from utils.helpers import load_cfg
+from utils.minio_utils import MinIOClient
 
 logging.basicConfig(level=logging.INFO, 
                     format='%(asctime)s:%(funcName)s:%(levelname)s:%(message)s')
@@ -82,7 +83,7 @@ def delta_convert(endpoint_url, access_key, secret_key):
         path_read = f"s3a://{BUCKET_NAME_3}/" + file
         logging.info(f"Saving delta file: {file}")
 
-        df_delta = df.write \
+        df.write \
                     .format("delta") \
                     .mode("overwrite") \
                     .save(f"s3a://{BUCKET_NAME_3}/{datalake_cfg['folder_name']}")
