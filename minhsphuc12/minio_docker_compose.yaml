@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio_phuc
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password
+    volumes:
+      - /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/minio/data:/data
+      - /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/minio/config:/root/.minio
+    ports:
+      - "9025:9000"
+      - "9026:9001"
+    command: server /data --console-address ":9001"
+
+volumes:
+  data:
+  config:

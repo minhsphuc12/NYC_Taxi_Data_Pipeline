@@ -1,0 +1,34 @@
+
+# Starting point is we have NYC Taxi Data on Website
+# Download data
+# Store raw data
+# Process data as 
+
+
+- build minio service to store file object (raw data, processed data)
+- build airflow to schedule jobs
+- build postgres SQL 
+- build kafka connector to convert SQL to streaming
+- build spark to ingest streaming data, and analyze batch data
+- clone data to sandbox for data scientist feature engineering and modeling
+
+minio
+docker pull minio/minio
+docker run -p 9015:9000 -p 9016:9001 --name minio_phuc \
+  -e "MINIO_ROOT_USER=admin" \
+  -e "MINIO_ROOT_PASSWORD=password" \
+  -v /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/minio/data:/data \
+  -v /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/minio/config:/root/.minio \
+  minio/minio server /data --console-address ":9001"
+
+wget https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod +x mc
+sudo mv mc /usr/local/bin
+mc --version
+
+docker-compose -f minio_docker_compose.yaml up -d       
+
+mc alias set myminio http://localhost:9000 admin password
+mc alias set myminio http://localhost:9025 admin password
+
+
