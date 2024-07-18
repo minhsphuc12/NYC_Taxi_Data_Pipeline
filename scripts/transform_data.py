@@ -7,8 +7,8 @@ import time
 
 utils_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils'))
 sys.path.append(utils_path)
-from helpers import load_cfg
-from minio_utils import MinIOClient
+from utils.helpers import load_cfg
+from utils.minio_utils import MinIOClient
 
 ###############################################
 # Parameters & Arguments

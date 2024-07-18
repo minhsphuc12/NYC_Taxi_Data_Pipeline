@@ -32,3 +32,6 @@ mc alias set myminio http://localhost:9000 admin password
 mc alias set myminio http://localhost:9025 admin password
 
 
+docker compose -f docker_compose.yaml up -d --remove-orphans --force-recreate
+
+

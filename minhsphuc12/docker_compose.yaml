@@ -1,0 +1,34 @@
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio_phuc
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password
+    volumes:
+      - /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/minio/data:/data
+      - /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/minio/config:/root/.minio
+    ports:
+      - "9025:9000"
+      - "9026:9001"
+    command: server /data --console-address ":9001"
+
+  db:
+    image: postgres:latest
+    container_name: db_phuc
+    command: ["postgres", "-c", "wal_level=logical"]
+    healthcheck:
+      test: ["CMD", "psql", "-U", "k6", "-c", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - /Users/phucnm/git/misc/NYC_Taxi_Data_Pipeline/minhsphuc12/postgres/data:/var/lib/postgresql/data
