@@ -34,4 +34,5 @@ mc alias set myminio http://localhost:9025 admin password
 
 docker compose -f docker_compose.yaml up -d --remove-orphans --force-recreate
 
-
+docker stack deploy -c kafka-docker-compose.yml kafka-stack
+docker stack rm kakfa-kafka

@@ -1,0 +1,9 @@
+brew install kafka
+
+m1 m2:Remember, if you have a Mac with an M chip from Apple, you will need to replace /usr/local/ with /opt/homebrew/. The instructions are identical otherwise.
+
+/opt/homebrew/bin/zookeeper-server-start /opt/homebrew/etc/zookeeper/zoo.cfg
+
+/opt/homebrew/bin/kafka-server-start /opt/homebrew/etc/kafka/server.properties
+
+https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-mac-with-homebrew/
